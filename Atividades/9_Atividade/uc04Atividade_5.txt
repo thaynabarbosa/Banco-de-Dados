@@ -1,0 +1,180 @@
+use UC04atividade
+'switched to db UC04atividade'
+
+
+
+db.funcionario.insertOne({
+  nomeFuncionario: "Sílvio Cortês",
+  telefone: "99 7898-1234",
+  cpf:"84537768061",
+  cargo: {
+    descricao: "vendedor",
+    salario: 2500,
+    comissao: 10
+    },
+  usuario:{
+    login: "silvioc",
+    senha: "sil123",
+    ultimoLogin: "2022-01-10 10:00:00"
+    }
+    })
+{ acknowledged: true,
+  insertedId: ObjectId("62df522474b1c85dce766e50") }
+
+
+
+
+db.funcionario.insertMany([{
+  nomeFuncionario: "Amaro Valadão",
+  telefone: "99 7534-1234",
+  cpf:"03074142057",
+  cargo: {
+    descricao: "Vendedor",
+    salario: 2500,
+    comissao: 10
+    },
+  usuario:{
+    login: "amarov",
+    senha: "ama123",
+    ultimoLogin: "2022-01-10 10:00:00"
+    }},
+    {
+  nomeFuncionario: "Marcos Valadão",
+  telefone: "99 7534-7897",
+  cpf:"40967947081",
+  cargo: {
+    descricao: "Vendedor",
+    salario: 2500,
+    comissao: 10
+    },
+  usuario:{
+    login: "marcosv",
+    senha: "mar123",
+    ultimoLogin: "2022-01-10 10:00:00"
+    }},
+    {
+  nomeFuncionario: "Domingas Souza Sá",
+  telefone: "99 7534-1234",
+  cpf:"51077408048",
+  cargo: {
+    descricao: "Supervisor de vendas",
+    salario: 2800,
+    comissao: 10
+    },
+  usuario:{
+    login: "domingass",
+    senha: "dom123",
+    ultimoLogin: "2022-01-10 10:00:00"
+    }},
+    {
+  nomeFuncionario: "Marina Frazão",
+  telefone: "99 7589-1854",
+  cpf:"21788502000",
+  cargo: {
+    descricao: "Gerente",
+    salario: 5000,
+    comissao: 0
+    },
+  usuario:{
+    login: "marinaf",
+    senha: "mar123",
+    ultimoLogin: "2022-01-10 10:00:00"
+    }},
+    {
+  nomeFuncionario: "Joana Freitas",
+  telefone: "99 7589-7534",
+  cpf:"85690938025",
+  cargo: {
+    descricao: "Serviços Gerais",
+    salario: 1500,
+    comissao: 0
+    },
+  usuario:{
+    login: "joanaf",
+    senha: "joa123",
+    ultimoLogin: "2022-01-10 10:00:00"
+    }},
+    {
+  nomeFuncionario: "Aparício Dias",
+  telefone: "99 7514-7884",
+  cpf:"14131448025",
+  cargo: {
+    descricao: "Serviços Gerais",
+    salario: 1500,
+    comissao: 0
+    },
+  usuario:{
+    login: "apariciod",
+    senha: "apa123",
+    ultimoLogin: "2022-01-10 10:00:00"
+    }},
+    {
+  nomeFuncionario: "Filomena da Luz",
+  telefone: "99 7584-7884",
+  cpf:"19641782070",
+  cargo: {
+    descricao: "Estoquista",
+    salario: 2000,
+    comissao: 0
+    },
+  usuario:{
+    login: "filomenal",
+    senha: "fil123",
+    ultimoLogin: "2022-01-10 10:00:00"
+    }}
+])
+{ acknowledged: true,
+  insertedIds: 
+   { '0': ObjectId("62df576474b1c85dce766e51"),
+     '1': ObjectId("62df576474b1c85dce766e52"),
+     '2': ObjectId("62df576474b1c85dce766e53"),
+     '3': ObjectId("62df576474b1c85dce766e54"),
+     '4': ObjectId("62df576474b1c85dce766e55"),
+     '5': ObjectId("62df576474b1c85dce766e56"),
+     '6': ObjectId("62df576474b1c85dce766e57") } }
+
+
+db.funcionario.updateOne(
+  {"nomeFuncionario":"Joana Freitas"},
+  {$set: {"cargo.descricao":"Estoquista","cargo.salario":"2000"}
+  })
+{ acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0 }
+
+
+
+db.funcionario.find({nomeFuncionario: "Joana Freitas"})
+{ _id: ObjectId("62df576474b1c85dce766e55"),
+  nomeFuncionario: 'Joana Freitas',
+  telefone: '99 7589-7534',
+  cpf: '85690938025',
+  cargo: { descricao: 'Estoquista', salario: '2000', comissao: 0 },
+  usuario: 
+   { login: 'joanaf',
+     senha: 'joa123',
+     ultimoLogin: '2022-01-10 10:00:00' } }
+
+
+
+db.funcionario.find({"cargo.descricao": "Vendedor"})
+{ _id: ObjectId("62df576474b1c85dce766e51"),
+  nomeFuncionario: 'Amaro Valadão',
+  telefone: '99 7534-1234',
+  cpf: '03074142057',
+  cargo: { descricao: 'Vendedor', salario: 2500, comissao: 10 },
+  usuario: 
+   { login: 'amarov',
+     senha: 'ama123',
+     ultimoLogin: '2022-01-10 10:00:00' } }
+{ _id: ObjectId("62df576474b1c85dce766e52"),
+  nomeFuncionario: 'Marcos Valadão',
+  telefone: '99 7534-7897',
+  cpf: '40967947081',
+  cargo: { descricao: 'Vendedor', salario: 2500, comissao: 10 },
+  usuario: 
+   { login: 'marcosv',
+     senha: 'mar123',
+     ultimoLogin: '2022-01-10 10:00:00' } }
